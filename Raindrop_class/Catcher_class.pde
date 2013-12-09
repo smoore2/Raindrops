@@ -12,8 +12,7 @@ class Catcher {
   void display() {
     colorMode(RGB);
     rectMode(CENTER);
-    fill(0);
-    rect(x, y, w, h);
+      rect(x, y, w, h);
   }
 
   void update() {
