@@ -1,28 +1,18 @@
 class Raindrop {
-  float y;
-  float x;
-  
+  PVector loc, vel;
+  int d= 25;
+
   Raindrop() {
-   x=random(width); 
+    loc= new PVector(random(width), -d);
+    vel= new PVector (0, random(2, 5));
   }
 
   void display() {
-    ellipse(x, y, 25, 25);
+    ellipse(loc.x, loc.y, d, d);
   }
 
-  void move() { 
-    y++;    
-  }
-  
-  void reset(){
-      y=-12;
-      x=random(width); 
-  }
-
-  void checkCatcher(Catcher c) {
-    if (x > c.x && x < c.x + c.w && y > c.y && y < c.y + c.h){
-      reset();
-    }
+  void drop() { 
+    loc.add(vel);
   }
 }
 

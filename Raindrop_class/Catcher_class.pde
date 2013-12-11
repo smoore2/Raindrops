@@ -1,23 +1,25 @@
 
 class Catcher {
-  int x, y, w, h;
+  PVector loc;
+  int d;
 
   Catcher() {
-    x = mouseX;
-    y = mouseY;
-    w = 50;
-    h = 25;
+    loc= new PVector(mouseX, mouseY);
+    d=45;
   }
 
   void display() {
     colorMode(RGB);
-    rectMode(CENTER);
-      rect(x, y, w, h);
+    ellipse(loc.x, loc.y, d, d);
   }
 
   void update() {
-    x = mouseX;
-    y = mouseY;
+    loc.set(mouseX, mouseY);
+  }
+  void checkCatcher(Raindrop drop) {
+    if (loc.dist(drop.loc) < d/2 + drop.d/2) {
+      drop.loc.set(-width, height*10);
+      points++;
+    }
   }
 }
-
