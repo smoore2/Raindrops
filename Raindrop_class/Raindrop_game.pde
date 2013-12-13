@@ -3,10 +3,13 @@ int oldtime= 0;
 int newtime= 0;
 int changetime= 0;
 int index= 1;
-Raindrop[] r = new Raindrop[100];
+PImage city;
+Raindrop[] r = new Raindrop[500];
 Catcher c1;  
 void setup() {
-  size(500, 500);
+  city= loadImage ("city.png");
+  imageMode(CENTER);
+  size(1000, 1000);
   colorMode(HSB, 360, 100, 100);
   for (int i = 0; i < r.length; i++) {
     r[i] = new Raindrop();
@@ -15,10 +18,10 @@ void setup() {
 }
 
 void draw() {
-  background(230, 79, 42);
+  image(city, width/2, height/2,width,height);
   fill(0);
   textSize(25);
-  text(points, height/2, width/2);
+  text(points, 50, 50);
   newtime= millis();
   changetime= newtime - oldtime;
   if (changetime>= 500) {
