@@ -1,23 +1,23 @@
 class Person {
-  PVector loc;
+  PVector loc, vel;
   int d= 25;
-  int x=0;
+  PImage slowman;
   Person() {
-    strokeWeight(15);
-    loc= new PVector(x, height-d);
+    loc= new PVector(random(d*-500, -d*10), height-d);
+    //this controls the location from which the person will begin walking
+    vel= new PVector (random(1, 5), 0);
+    //this controls the speed of the person
+    slowman= loadImage("slow man.png");
+    imageMode(CENTER);
+    //this is the image used for the person
   }
   void display() {
-    ellipse(loc.x, loc.y, d, d);
+    image(slowman, loc.x, loc.y, 100, 100);
+    //this displays the person
   }
   void walk() {
-    loc.x=loc.x+1;
-    if (loc.x>width) {
-      loc.x=0;
-    }
+    loc.add(vel);
+    //this adds speed to the location of the person (gives the person speed)
   }
-  void checkPerson(Raindrop drop){
-if (loc.dist(drop.loc) < d/2 + drop.d/2) {
-      drop.loc.set(-width, height*10);
-      points--;
-}}}
+}  
 
